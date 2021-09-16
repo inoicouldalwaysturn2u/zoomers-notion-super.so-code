@@ -67,8 +67,10 @@ function redirectHoursWeeks() {
   };
 
   if ( arr[ 0 ] !== 'hours' ) {
-    return false
+    return false;
   };
+
+  const { currentWeek, previousWeek, nextWeek } = weeks();
 
   if ( arr.length === 3 ) {
     if ( arr[ 1 ] === 'previous' ) {
