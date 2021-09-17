@@ -1,53 +1,53 @@
 function weeks() {
   const currentWeek = {
     mon: 
-      'https://hours.zone/invite/J1vnLc206',
+      'https://hours.zone/session/J1vnLc206',
     tue: 
-      'https://hours.zone/invite/6QKPj5tVF',
+      'https://hours.zone/session/6QKPj5tVF',
     wed: 
-      'https://hours.zone/invite/g6YNRVEuE',
+      'https://hours.zone/session/g6YNRVEuE',
     thu: 
-      'https://hours.zone/invite/igKyKt7R-',
+      'https://hours.zone/session/igKyKt7R-',
     fri: 
-      'https://hours.zone/invite/OfjT_pykG',
+      'https://hours.zone/session/OfjT_pykG',
     sat: 
-      'https://hours.zone/invite/7hq7YrCi5',
+      'https://hours.zone/session/7hq7YrCi5',
     sun: 
-      'https://hours.zone/invite/52IIgDABZ'
+      'https://hours.zone/session/52IIgDABZ'
   };
 
   const nextWeek = {
     mon: 
-      'https://hours.zone/invite/oG8HbVsOs',
+      'https://hours.zone/session/oG8HbVsOs',
     tue: 
-      'https://hours.zone/invite/RoCzsnSSl',
+      'https://hours.zone/session/RoCzsnSSl',
     wed: 
-      'https://hours.zone/invite/4cQUAWiS2',
+      'https://hours.zone/session/4cQUAWiS2',
     thu: 
-      'https://hours.zone/invite/FTP1-vSSL',
+      'https://hours.zone/session/FTP1-vSSL',
     fri: 
-      'https://hours.zone/invite/4Xo_zF78H',
+      'https://hours.zone/session/4Xo_zF78H',
     sat: 
-      'https://hours.zone/invite/RoCzsnSSl',
+      'https://hours.zone/session/RoCzsnSSl',
     sun: 
-      'https://hours.zone/invite/oG8HbVsOs'
+      'https://hours.zone/session/oG8HbVsOs'
   };
 
   const previousWeek = {
     mon: 
-      'https://hours.zone/invite/Rbh8tgpxZ',
+      'https://hours.zone/session/Rbh8tgpxZ',
     tue: 
-      'https://hours.zone/invite/R2TXVrw9M',
+      'https://hours.zone/session/R2TXVrw9M',
     wed: 
-      'https://hours.zone/invite/QvMrJaEPj',
+      'https://hours.zone/session/QvMrJaEPj',
     thu: 
-      'https://hours.zone/invite/dCTe9kS3A',
+      'https://hours.zone/session/dCTe9kS3A',
     fri: 
-      'https://hours.zone/invite/smVa8GVvi',
+      'https://hours.zone/session/smVa8GVvi',
     sat: 
-      'https://hours.zone/invite/Rkl-4Q8W7',
+      'https://hours.zone/session/Rkl-4Q8W7',
     sun: 
-      'https://hours.zone/invite/nESx3_6EA'
+      'https://hours.zone/session/nESx3_6EA'
   };
 
   return { currentWeek, nextWeek, previousWeek };
@@ -78,10 +78,13 @@ function redirectHoursWeeks() {
     } else if ( arr[ 1 ] === 'next' ) {
       redirFn( nextWeek, arr[ 2 ] );
     };
-  } else if ( arr.length === 2 ) {
+  } else if ( arr.length === 2 && ( arr[ 1 ] !== 'previous' && arr[ 1 ] !== 'next' ) ) {
     redirFn( currentWeek, arr[ 1 ] );
   };
 };
 
-redirectHoursWeeks();
+document.addEventListener( 
+  "DOMContentLoaded", 
+  redirectHoursWeeks
+);
 </script>
