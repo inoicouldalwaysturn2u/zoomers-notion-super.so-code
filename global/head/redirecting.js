@@ -2,23 +2,6 @@
 const minithonLink = 'https://hours.zone/invite/PlwhJ-hAT';
 
 function weeks() {
-const previousWeek = {
-  mon: 
-    'https://hours.zone/invite/J1vnLc206',
-  tue: 
-    'https://hours.zone/invite/6QKPj5tVF',
-  wed: 
-    'https://hours.zone/invite/g6YNRVEuE',
-  thu: 
-    'https://hours.zone/invite/igKyKt7R-',
-  fri: 
-    'https://hours.zone/invite/OfjT_pykG',
-  sat: 
-    'https://hours.zone/invite/7hq7YrCi5',
-  sun: 
-    'https://hours.zone/invite/52IIgDABZ'
-};
-
 const currentWeek = {
   mon: 
     'https://hours.zone/invite/oG8HbVsOs',
@@ -34,23 +17,6 @@ const currentWeek = {
     'https://hours.zone/invite/FTP1-vSSL',
   sun: 
     'https://hours.zone/invite/4Xo_zF78H'
-};
-
-const nextWeek = {
-  mon: 
-    'https://hours.zone/invite/GSEE6iqOm', 
-  tue: 
-    'https://hours.zone/invite/TsLKXCNZ7', 
-  wed: 
-    'https://hours.zone/invite/QxjxoFDb4', 
-  thu: 
-    'https://hours.zone/invite/241iIK2rL', 
-  fri: 
-    'https://hours.zone/invite/emNtUkTE0', 
-  sat: 
-    'https://hours.zone/invite/0LR-0dD8q', 
-  sun: 
-    'https://hours.zone/invite/BUqtG3c-p'
 };
 
 const weekly = {
@@ -70,7 +36,7 @@ const weekly = {
     'https://hours.zone/invite/ydndRvuce'
 };
 
-return { currentWeek, nextWeek, previousWeek, weekly };
+return { currentWeek, weekly };
 };
 </script>
 
@@ -92,7 +58,7 @@ function redirectHoursWeeks() {
     arr.shift();
   };
   
-  const { currentWeek, previousWeek, nextWeek, weekly } = weeks();
+  const { currentWeek, weekly } = weeks();
   
   if ( arr.length === 1 ) {
     switch ( arr[ 0 ] ) {
@@ -103,7 +69,8 @@ function redirectHoursWeeks() {
       case 'fri': 
       case 'sat': 
       case 'sun': 
-        redirFn( weekly, arr[ 0 ] );
+        // redirFn( weekly, arr[ 0 ] );
+        redirFn( currentWeek, arr[ 0 ] );
         return;
       default:
         break;
@@ -111,16 +78,12 @@ function redirectHoursWeeks() {
   };
 
   if ( arr.length === 2 ) {
-    if ( arr[ 0 ] === 'previous' ) {
-      redirFn( previousWeek, arr[ 2 ] );
-    } else if ( arr[ 0 ] === 'next' ) {
-      redirFn( nextWeek, arr[ 2 ] );
-    } else if ( arr[ 0 ] === 'thons' ) {
+    if ( arr[ 0 ] === 'thons' ) {
       if ( arr[ 1 ] === 'minithon' ) {
         window.location.replace( minithonLink );
       };
     };
-  } else if ( arr.length === 1 && ( arr[ 0 ] !== 'previous' && arr[ 0 ] !== 'next' ) ) {
+  } else if ( arr.length === 1 ) {
     if ( arr[ 0 ] === 'minithon' ) {
       window.location.replace( minithonLink );
       return;
@@ -129,12 +92,7 @@ function redirectHoursWeeks() {
   };
 };
 
-
 redirectHoursWeeks();
-// document.addEventListener( 
-//   "DOMContentLoaded", 
-//   redirectHoursWeeks
-// );
 </script>
 
 <script>
