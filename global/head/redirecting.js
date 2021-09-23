@@ -53,7 +53,24 @@ const nextWeek = {
     'https://hours.zone/invite/BUqtG3c-p'
 };
 
-  return { currentWeek, nextWeek, previousWeek };
+const weekly = {
+  mon: 
+    'https://hours.zone/invite/KHGevWzf3', 
+  tue: 
+    'https://hours.zone/invite/vpAZL3ST3', 
+  wed: 
+    'https://hours.zone/invite/8XeWxcv9_', 
+  thu: 
+    'https://hours.zone/invite/gssIWWbAi', 
+  fri: 
+    'https://hours.zone/invite/HfmayEHBJ', 
+  sat: 
+    'https://hours.zone/invite/RVTfGXV2u', 
+  sun: 
+    'https://hours.zone/invite/ydndRvuce'
+};
+
+return { currentWeek, nextWeek, previousWeek, weekly };
 };
 </script>
 
@@ -75,6 +92,8 @@ function redirectHoursWeeks() {
     arr.shift();
   };
   
+  const { currentWeek, previousWeek, nextWeek, weekly } = weeks();
+  
   if ( arr.length === 1 ) {
     switch ( arr[ 0 ] ) {
       case 'mon': 
@@ -90,8 +109,6 @@ function redirectHoursWeeks() {
         break;
     };
   };
-
-  const { currentWeek, previousWeek, nextWeek } = weeks();
 
   if ( arr.length === 2 ) {
     if ( arr[ 0 ] === 'previous' ) {
