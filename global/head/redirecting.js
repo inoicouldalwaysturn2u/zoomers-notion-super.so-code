@@ -1,4 +1,6 @@
 <script>
+const minithonLink = 'https://hours.zone/invite/PlwhJ-hAT';
+
 function weeks() {
 const previousWeek = {
   mon: 
@@ -69,23 +71,71 @@ function redirectHoursWeeks() {
 
   if ( arr[ 0 ] !== 'hours' ) {
     return false;
+  } else {
+    arr.shift();
+  };
+  
+  if ( arr.length === 1 ) {
+    switch ( arr[ 0 ] ) {
+      case 'mon': 
+      case 'tue': 
+      case 'wed': 
+      case 'thu': 
+      case 'fri': 
+      case 'sat': 
+      case 'sun': 
+        redirFn( weekly, arr[ 0 ] );
+        return;
+      default:
+        break;
+    };
   };
 
   const { currentWeek, previousWeek, nextWeek } = weeks();
 
-  if ( arr.length === 3 ) {
-    if ( arr[ 1 ] === 'previous' ) {
+  if ( arr.length === 2 ) {
+    if ( arr[ 0 ] === 'previous' ) {
       redirFn( previousWeek, arr[ 2 ] );
-    } else if ( arr[ 1 ] === 'next' ) {
+    } else if ( arr[ 0 ] === 'next' ) {
       redirFn( nextWeek, arr[ 2 ] );
+    } else if ( arr[ 0 ] === 'thons' ) {
+      if ( arr[ 1 ] === 'minithon' ) {
+        window.location.replace( minithonLink );
+      };
     };
-  } else if ( arr.length === 2 && ( arr[ 1 ] !== 'previous' && arr[ 1 ] !== 'next' ) ) {
-    redirFn( currentWeek, arr[ 1 ] );
+  } else if ( arr.length === 1 && ( arr[ 0 ] !== 'previous' && arr[ 0 ] !== 'next' ) ) {
+    if ( arr[ 0 ] === 'minithon' ) {
+      window.location.replace( minithonLink );
+      return;
+    };
+    redirFn( currentWeek, arr[ 0 ] );
   };
 };
 
-document.addEventListener( 
-  "DOMContentLoaded", 
-  redirectHoursWeeks
-);
+
+redirectHoursWeeks();
+// document.addEventListener( 
+//   "DOMContentLoaded", 
+//   redirectHoursWeeks
+// );
+</script>
+
+<script>
+function makeNewTabLinks() {
+  const links = [
+    'mon', 
+    'tue', 
+    'wed', 
+    'thu', 
+    'fri', 
+    'sat', 
+    'sun'
+  ];
+
+  links.forEach( solo => { 
+    document
+    .getElementById( pre + solo )
+    .setAttribute( "target", "_blank" );
+  } );
+};
 </script>
